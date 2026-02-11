@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CurriForge - AI Curriculum Generator</title>
+</head>
+<body>
+
+    <h1>CurriForge - AI Curriculum Generator</h1>
+
+    <form method="POST">
+        <label>Course Name:</label><br>
+        <input type="text" name="course" required><br><br>
+
+        <label>Level:</label><br>
+        <input type="text" name="level" required><br><br>
+
+        <label>Duration (weeks):</label><br>
+        <input type="number" name="duration" required><br><br>
+
+        <button type="submit">Generate</button>
+    </form>
+
+    {% if result %}
+        <hr>
+
+        {% if result.error %}
+            <h3 style="color:red;">Error:</h3>
+            <p>{{ result.error }}</p>
+            <pre>{{ result.details }}</pre>
+        {% else %}
+
+            <h3>Modules</h3>
+            <ul>
+                {% for m in result.modules %}
+                    <li>{{ m }}</li>
+                {% endfor %}
+            </ul>
+
+            <h3>Learning Outcomes</h3>
+            <ul>
+                {% for l in result.learning_outcomes %}
+                    <li>{{ l }}</li>
+                {% endfor %}
+            </ul>
+
+            <h3>Assessments</h3>
+            <ul>
+                {% for a in result.assessments %}
+                    <li>{{ a }}</li>
+                {% endfor %}
+            </ul>
+
+        {% endif %}
+    {% endif %}
+
+</body>
+</html>
