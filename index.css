@@ -1,0 +1,144 @@
+/* Global theme tweaks for brighter violet–purple gradient UI */
+:root{
+  --violet-500:#8b5cf6;   /* brighter violet */
+  --violet-600:#7c3aed;
+  --pink-500:#ec4899;     /* added pink glow */
+  --indigo-500:#6366f1;
+  --indigo-600:#4f46e5;
+  --sky-400:#38bdf8;      /* brighter sky blue */
+  --cyan-400:#22d3ee;     /* fresh cyan pop */
+  --glass-bg: rgba(255,255,255,0.92);
+}
+
+html,body,#root{height:100%;}
+
+body{
+  background: linear-gradient(
+    180deg,
+    #f5f3ff 0%,     /* soft violet */
+    #eef2ff 40%,    /* light indigo */
+    #ecfeff 100%    /* soft cyan */
+  );
+  color: #0f172a;
+}
+
+/* Glass card shared style */
+.glass-card{
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(139,92,246,0.18);
+  border-radius: 1.5rem;
+  box-shadow: 0 12px 40px rgba(99,102,241,0.15);
+}
+
+/* Primary violet–pink gradient button */
+.btn-primary{
+  background: linear-gradient(
+    90deg,
+    var(--violet-600) 0%,
+    var(--pink-500) 50%,
+    var(--indigo-600) 100%
+  );
+  color: white;
+  box-shadow: 0 10px 30px rgba(124,58,237,0.35);
+}
+.btn-primary:hover{
+  filter: brightness(1.12) saturate(1.2);
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 14px 40px rgba(124,58,237,0.45);
+}
+
+.btn-soft{
+  background: linear-gradient(
+    90deg,
+    rgba(139,92,246,0.18),
+    rgba(56,189,248,0.18)
+  );
+  color: var(--indigo-600);
+}
+
+/* Subtle colorful gradient border */
+.gradient-border{
+  position: relative;
+}
+.gradient-border:before{
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    90deg,
+    rgba(139,92,246,0.5),
+    rgba(236,72,153,0.4),
+    rgba(56,189,248,0.4)
+  );
+  z-index: -1;
+  border-radius: inherit;
+  filter: blur(6px);
+}
+
+/* Input focus animations */
+.input-animate{
+  transition: box-shadow 220ms ease, transform 160ms ease, border-color 220ms ease;
+}
+.input-animate:focus{
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(99,102,241,0.25);
+  border-color: rgba(139,92,246,0.5);
+}
+
+/* Rounded helper */
+.rounded-xl-3 { border-radius: 1.5rem; }
+
+/* Toasts */
+.toast-container{
+  position: fixed;
+  right: 1rem;
+  top: 1rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.toast{
+  display:flex;
+  align-items:center;
+  gap:0.75rem;
+  padding:0.9rem 1.1rem;
+  border-radius:0.9rem;
+  box-shadow:0 14px 40px rgba(2,6,23,0.15);
+  font-weight:600;
+}
+.toast-success{
+  background: linear-gradient(90deg, rgba(56,189,248,0.2), rgba(139,92,246,0.2));
+  color: #1e3a8a;
+}
+.toast-error{
+  background: linear-gradient(90deg, rgba(251,191,36,0.25), rgba(239,68,68,0.15));
+  color:#b91c1c;
+}
+
+/* Eye toggle inside inputs */
+.input-eye{
+  position:absolute;
+  right:12px;
+  top:50%;
+  transform:translateY(-50%);
+  display:flex;
+  align-items:center;
+  gap:6px
+}
+.input-eye button{
+  background:linear-gradient(90deg, rgba(139,92,246,0.15), rgba(236,72,153,0.15));
+  border:none;
+  padding:6px 8px;
+  border-radius:10px;
+  color:#4f46e5;
+}
+.input-eye button:hover{
+  background:linear-gradient(90deg, rgba(139,92,246,0.25), rgba(236,72,153,0.25));
+}
+
+/* Responsive tweaks */
+@media (max-width:640px){
+  .glass-card{padding:1rem}
+}
